@@ -31,7 +31,7 @@ def weekly_form(user_id=None):
     if not current_user.is_authenticated():
         return redirect(request.referrer or '/')
 
-    if form.validate_on_submit():
+    #if form.validate_on_submit():
 
         #creat connection
         #ds = current_app.security.datastore
