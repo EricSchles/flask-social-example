@@ -5,6 +5,7 @@
 .pydevproject
 app/static/.webaassets-cache/*
 !app/static/.webassets-cache/.gitignore
+*.py~
 *.pyc
 app/config/*.yml
 !app/config/app.yml
