@@ -28,8 +28,8 @@ def login():
 def weekly_form(user_id=None):
     
     form = WeeklyForm()
-    if not current_user.is_authenticated():
-        return redirect(request.referrer or '/')
+    #if not current_user.is_authenticated():
+    #    return redirect(request.referrer or '/')
 
     #if form.validate_on_submit():
 

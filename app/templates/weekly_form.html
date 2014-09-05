@@ -1,19 +1,11 @@
-<!-- extend from base layout -->
-{% extends "layout/boilerplate.html" %}
+{% 'layouts/boilerplate.html' %}
 
 {% block body_class %}main main-index{% endblock %}
-{% block layout %}
-<div class="hero-unit">
 
-<h1 align="center">Weekly form</h1>
-<form action="" method="post" name="form">
-    {{form.hidden_tag()}}
+{% block layout %}
     <p>
-        Please enter your OpenID:<br>
-        {{form.openid(size=80)}}<br>
+      This is the sign on site for the mobile emotion sensing research project.  You will use it to fill out your weekly form as well as to register.  Registration can only be carried out once.
     </p>
-    <p>{{form.question_one}}</p>
-    <!--Fill in the rest if the above worked-->
-    <p><input type="submit" value="Sign In"></p>
-</form>
+
 {% endblock %}
+
