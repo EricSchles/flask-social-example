@@ -12,6 +12,7 @@ from .middleware import MethodRewriteMiddleware
 
 
 app = Flask(__name__)
+app.debug = True
 app.config.from_yaml(app.root_path)
 app.config.from_heroku()
 app.wsgi_app = MethodRewriteMiddleware(app.wsgi_app)
