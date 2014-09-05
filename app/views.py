@@ -27,7 +27,7 @@ def login():
 @app.route('/weekly_form/<user_id>', methods=['GET','POST'])
 def weekly_form(user_id=None):
     
-    form = WeeklyForm()
+    #form = WeeklyForm()
     #if not current_user.is_authenticated():
     #    return redirect(request.referrer or '/')
 
