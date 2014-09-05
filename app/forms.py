@@ -1,7 +1,7 @@
 
 from flask import current_app
 from flask.ext.wtf import Form
-from wtforms import TextField, PasswordField, ValidationError
+from wtforms import TextField, PasswordField, ValidationError,SelectField
 from wtforms.validators import Required, Email, Length, Regexp, EqualTo
 
 class UniqueUser(object):
@@ -34,3 +34,20 @@ class RegisterForm(Form):
     email = TextField('Email', validators['email'])
     password = PasswordField('Password', validators['password'], )
     confirm = PasswordField('Confirm Password')
+
+
+class WeeklyForm(Form):
+    question_one = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_two = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_three = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_four = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_five = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_six = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_seven = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_eight = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_nine = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_ten = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_eleven = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_twelve = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_thirteen = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])
+    question_fourteen = SelectField('Response', choices=[('1','None of the time'),('2','Rarely'),('3','Some of the time'),('4','Often'),('5','All of the time')])

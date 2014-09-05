@@ -6,10 +6,10 @@ from flask.ext.social.utils import get_provider_or_404
 from flask.ext.social.views import connect_handler
 
 from . import app, db
-from .forms import RegisterForm
+from .forms import RegisterForm, WeeklyForm
 from .models import User
 from .tools import requires_auth
-
+from datetime import datetime
 
 @app.route('/')
 def index():
@@ -22,6 +22,41 @@ def login():
         return redirect(request.referrer or '/')
 
     return render_template('login.html', form=LoginForm())
+
+@app.route('/weekly_form',methods['GET','POST'])
+@app.route('/weekly_form/<user_id>', methods=['GET','POST'])
+def weekly_form(user_id=None):
+    
+    form = WeeklyForm()
+    if not current_user.is_authenticated():
+        return redirect(request.referrer or '/')
+
+    if form.validate_on_submit():
+
+        #creat connection
+        ds = current_app.security.datastore
+        
+        #add data to record for user?
+        date = datetime.now()
+        question_one = form.question_one.data
+        question_two = form.question_two.data
+        question_three = form.question_three.data
+        question_four = form.question_four.data
+        question_five = form.question_five.data
+        question_six = form.question_six.data
+        question_seven = form.question_seven.data
+        question_eight = form.question_eight.data
+        question_nine = form.question_nine.data
+        question_ten = form.question_ten.data
+        question_eleven = form.question_eleven.data
+        question_twelve = form.question_twelve.data
+        question_thirteen = form.question_thirteen.data
+        question_fourteen = form.question_fourteen.data
+        question_two = form.question_two.data
+
+        #send things to the database here?
+    return render_template('weekly_form.html', form=form)
+    
 
 
 @app.route('/register', methods=['GET', 'POST'])

@@ -1,0 +1,19 @@
+<!-- extend from base layout -->
+{% extends "layout/boilerplate.html" %}
+
+{% block body_class %}main main-index{% endblock %}
+{% block layout %}
+<div class="hero-unit">
+
+<h1 align="center">Weekly form</h1>
+<form action="" method="post" name="form">
+    {{form.hidden_tag()}}
+    <p>
+        Please enter your OpenID:<br>
+        {{form.openid(size=80)}}<br>
+    </p>
+    <p>{{form.question_one}}</p>
+    <!--Fill in the rest if the above worked-->
+    <p><input type="submit" value="Sign In"></p>
+</form>
+{% endblock %}
