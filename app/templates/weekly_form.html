@@ -1,11 +1,19 @@
-{% 'layouts/boilerplate.html' %}
+{% from '_macros.html' import render_field %}
 
-{% block body_class %}main main-index{% endblock %}
+{% extends '/layouts/boilerplate.html' %}
+
+{% block body_class %}main main-register{% endblock %}
+
 
 {% block layout %}
-    <p>
-      This is the sign on site for the mobile emotion sensing research project.  You will use it to fill out your weekly form as well as to register.  Registration can only be carried out once.
-    </p>
-
+<div class="page-header">
+  <h1>Register</h1>
+</div>
+<div class="row content">
+  <div class="span4 offset1">
+    <p>Test</p>
+  </div>
+ 
+  
+</div>
 {% endblock %}
-

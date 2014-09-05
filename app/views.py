@@ -56,7 +56,7 @@ def weekly_form(user_id=None):
 
         #send things to the database here?
         return render_template('index.html')
-    return render_template('weekly_form.html', form=form)
+    return render_template('weekly_form.html')
     
 
 
