@@ -38,21 +38,21 @@ def weekly_form(user_id=None):
         
         #add data to record for user?
         date = datetime.now()
-        question_one = form.question_one.data
-        question_two = form.question_two.data
-        question_three = form.question_three.data
-        question_four = form.question_four.data
-        question_five = form.question_five.data
-        question_six = form.question_six.data
-        question_seven = form.question_seven.data
-        question_eight = form.question_eight.data
-        question_nine = form.question_nine.data
-        question_ten = form.question_ten.data
-        question_eleven = form.question_eleven.data
-        question_twelve = form.question_twelve.data
-        question_thirteen = form.question_thirteen.data
-        question_fourteen = form.question_fourteen.data
-        question_two = form.question_two.data
+        # question_one = form.question_one.data
+        # question_two = form.question_two.data
+        # question_three = form.question_three.data
+        # question_four = form.question_four.data
+        # question_five = form.question_five.data
+        # question_six = form.question_six.data
+        # question_seven = form.question_seven.data
+        # question_eight = form.question_eight.data
+        # question_nine = form.question_nine.data
+        # question_ten = form.question_ten.data
+        # question_eleven = form.question_eleven.data
+        # question_twelve = form.question_twelve.data
+        # question_thirteen = form.question_thirteen.data
+        # question_fourteen = form.question_fourteen.data
+        # question_two = form.question_two.data
 
         #send things to the database here?
     return render_template('weekly_form.html', form=form)
