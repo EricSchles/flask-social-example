@@ -37,7 +37,7 @@ def weekly_form(user_id=None):
         #ds = current_app.security.datastore
         
         #add data to record for user?
-        date = datetime.now()
+        #date = datetime.now()
         # question_one = form.question_one.data
         # question_two = form.question_two.data
         # question_three = form.question_three.data
