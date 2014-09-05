@@ -27,36 +27,45 @@ def login():
 @app.route('/weekly_form/<user_id>', methods=['GET','POST'])
 def weekly_form(user_id=None):
     
+    if current_user.is_authenticated():
+        return redirect(request.referrer or '/')
+
     form = WeeklyForm()
-    if not current_user.is_authenticated():
-       return redirect(request.referrer or '/')
+
+    if provider_id:
+        provider = get_provider_or_404(provider_id)
+        connection_values = session.get('failed_login_connection', None)
+    else:
+        provider = None
+        connection_values = None
 
     if form.validate_on_submit():
-
-        creat connection
         ds = current_app.security.datastore
-        
-        add data to record for user?
-        date = datetime.now()
-        question_one = form.question_one.data
-        question_two = form.question_two.data
-        question_three = form.question_three.data
-        question_four = form.question_four.data
-        question_five = form.question_five.data
-        question_six = form.question_six.data
-        question_seven = form.question_seven.data
-        question_eight = form.question_eight.data
-        question_nine = form.question_nine.data
-        question_ten = form.question_ten.data
-        question_eleven = form.question_eleven.data
-        question_twelve = form.question_twelve.data
-        question_thirteen = form.question_thirteen.data
-        question_fourteen = form.question_fourteen.data
-        question_two = form.question_two.data
+        user = ds.create_user(email=form.email.data, password=form.password.data)
+        ds.commit()
 
-        #send things to the database here?
-        return render_template('index.html')
-    return render_template('weekly_form.html')
+        # See if there was an attempted social login prior to registering
+        # and if so use the provider connect_handler to save a connection
+        connection_values = session.pop('failed_login_connection', None)
+
+        if connection_values:
+            connection_values['user_id'] = user.id
+            connect_handler(connection_values, provider)
+
+        if login_user(user):
+            ds.commit()
+            flash('Account created successfully', 'info')
+            return redirect(url_for('profile'))
+
+        return render_template('thanks.html', user=user)
+
+    login_failed = int(request.args.get('login_failed', 0))
+
+    return render_template('register.html',
+                           form=form,
+                           provider=provider,
+                           login_failed=login_failed,
+                           connection_values=connection_values)
     
 
 
