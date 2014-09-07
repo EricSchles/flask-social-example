@@ -23,49 +23,6 @@ def login():
 
     return render_template('login.html', form=LoginForm())
 
-@app.route('/weekly_form',methods['GET','POST'])
-@app.route('/weekly_form/<user_id>', methods=['GET','POST'])
-def weekly_form(user_id=None):
-    
-    if current_user.is_authenticated():
-        return redirect(request.referrer or '/')
-
-    form = WeeklyForm()
-
-    if provider_id:
-        provider = get_provider_or_404(provider_id)
-        connection_values = session.get('failed_login_connection', None)
-    else:
-        provider = None
-        connection_values = None
-
-    if form.validate_on_submit():
-        ds = current_app.security.datastore
-        user = ds.create_user(email=form.email.data, password=form.password.data)
-        ds.commit()
-
-        # See if there was an attempted social login prior to registering
-        # and if so use the provider connect_handler to save a connection
-        connection_values = session.pop('failed_login_connection', None)
-
-        if connection_values:
-            connection_values['user_id'] = user.id
-            connect_handler(connection_values, provider)
-
-        if login_user(user):
-            ds.commit()
-            flash('Account created successfully', 'info')
-            return redirect(url_for('profile'))
-
-        return render_template('thanks.html', user=user)
-
-    login_failed = int(request.args.get('login_failed', 0))
-
-    return render_template('register.html',
-                           form=form,
-                           provider=provider,
-                           login_failed=login_failed,
-                           connection_values=connection_values)
     
 
 
